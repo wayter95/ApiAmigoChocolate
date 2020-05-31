@@ -20,11 +20,13 @@ routes.get('/wishlist',auth,WishList.index);
 routes.put('/wishlist/:id',auth,WishList.update);
 routes.delete('/wishlist/:id',auth,WishList.delete);
 
+routes.get('/allgroups',auth,Group.show);
 routes.get('/groups',auth,Group.index);
 routes.post('/groups',auth,Group.create);
 routes.put('/groups/:id',auth,Group.update);
 routes.delete('/groups/:id',auth,Group.delete);
 
 routes.put('/addtogroups/:id', GroupProfile.addToGroup);
+routes.get('/group/:id',GroupProfile.groupProfile);
 
 module.exports = routes;

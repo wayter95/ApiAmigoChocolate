@@ -3,9 +3,9 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
     async index(req, res) {
-        const { _id } = req.headers;
+        const { id } = req.headers;
 
-        const user = await User.findById({ _id });
+        const user = await User.findById({ _id:id });
 
         return res.json(user);
     },

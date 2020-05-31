@@ -21,6 +21,7 @@ module.exports = {
 
             return res.status(200).json({
                 auth:true,
+                name:user.name,
                 id:user._id,
                 token
             })

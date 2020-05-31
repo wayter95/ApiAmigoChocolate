@@ -1,10 +1,15 @@
 const Group = require('../models/group');
 
 module.exports = {
+    async show(req,res){
+        const group = await Group.find();
+
+        return res.json(group)
+    },
     async index(req, res){
         const userId = req.headers.id;
 
-        const group = await Group.find({createdBy: userId});
+        const group = await Group.find({'members.participants':userId});
 
         return res.json(group);
     },
@@ -14,7 +19,8 @@ module.exports = {
 
         const group = await Group.create({
             name, minimumValue,maximunValue,drawDate,
-            createdBy:createdBy
+            createdBy:createdBy,
+            members:{participants:createdBy}
         });
 
         return res.json(group);
