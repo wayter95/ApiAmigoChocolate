@@ -5,7 +5,7 @@ module.exports = {
     async index(req, res) {
         const { id } = req.headers;
 
-        const user = await User.findById({ _id:id });
+        const user = await User.findById({ _id: id });
 
         return res.json(user);
     },
@@ -18,12 +18,20 @@ module.exports = {
             })
             await newUSer.save();
             return res.status(201).json(newUSer);
-        }catch(err){
+        } catch (err) {
             console.log(err);
             return res.status(500).json({
-                message:"New user cannot be created...",
+                message: "New user cannot be created...",
                 err
             })
         }
+    },
+    async editProfile(req, res) {
+        const { name, email, password, birthday } = req.body;
+
+        const user = await User.findByIdAndUpdate(req.headers.id, { name, email, birthday,
+            password: bcrypt.hashSync(password, 10) })
+
+        return res.json(user);
     }
 }

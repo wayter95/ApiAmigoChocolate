@@ -20,7 +20,8 @@ module.exports = {
         const group = await Group.create({
             name, minimumValue,maximunValue,drawDate,
             createdBy:createdBy,
-            members:{participants:createdBy}
+            members:{participants:createdBy},
+            membersCount: + 1
         });
 
         return res.json(group);

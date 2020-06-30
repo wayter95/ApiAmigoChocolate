@@ -12,6 +12,7 @@ const routes = express.Router();
 
 routes.post('/users',User.create);
 routes.get('/users',auth,User.index);
+routes.put('/users',auth,User.editProfile);
 
 routes.post('/login',Login.login);
 

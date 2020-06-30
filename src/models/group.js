@@ -36,7 +36,10 @@ const GroupSchema = new Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         }
-    }]
+    }],
+    membersCount:{
+        type:Number
+    }
 });
 
 GroupSchema.plugin(mongoosePaginate);
